@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Usando Captcha";
+}
+
+
+
+<div>
+    <center>
+        <h1>Usando Google Captcha</h1>
+
+        @if (ViewBag.Mensagem != null && ViewBag.Hostname != null)
+        {
+           <div class="text-info">
+               <strong>Resposta :</strong> @ViewBag.Mensagem <br />
+               <strong>Hostname :</strong>  @ViewBag.Hostname  <br />
+           </div>
+        }
+        else
+        {
+            <span class="text-danger">@ViewBag.Mensagem</span>
+            
+        }
+
+
+
+        @using (Html.BeginForm("ValidarCaptcha", "Home", FormMethod.Post))
+        {
+            <br />
+
+            <!--Implemente o seu Site Key-->
+            <div class="g-recaptcha"  data-sitekey="<!--Informe aqui seu site key gerado pelo google-->"></div>
+
+            <br />
+            <input class="btn btn-primary" type="submit" value="VALIDAR CAPTCHA" />
+        }
+
+
+    </center>
+
+
+</div>
+
+
+<script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+
+
